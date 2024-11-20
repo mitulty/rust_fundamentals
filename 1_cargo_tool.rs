@@ -22,10 +22,10 @@
   there are two different profiles: one for development, when user want to rebuild quickly and often, and another for building the final program.
 - With simple projects, Cargo doesn’t provide a lot of value over just using rustc, but it will prove its worth as your programs become more intricate. 
   Once programs grow to multiple files or need a dependency, it’s much easier to let Cargo coordinate the build.
-- Summary of Cargo and its' commands:
+- Summary of Cargo and commands:
     - Create a project using 'cargo new <project_name>'.
     - Build a project using 'cargo build'. Use --release to build with optimizations.
-    - Build and run a project in one step using 'cargo run'.
+    - Build and run a project in one step using 'cargo run'. Use --release to run with optimizations.
     - Build a project without producing a binary to check for errors using 'cargo check'.
     - Instead of saving the result of the build in the same directory as the code, Cargo stores it in the target/debug directory.
 */
