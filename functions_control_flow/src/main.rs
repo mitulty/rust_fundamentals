@@ -52,7 +52,7 @@
   loop, if, else, and break. While a condition evaluates to true, the code runs; otherwise, it exits the loop.
 - The while construct can be used to loop over the elements of a collection, such as an array. This approach is error prone though.
 - As a more concise alternative, a for loop can be used to execute some code for each item in a collection.
-- A semicolon at the end of the loop body makes it an expression which returns a value.
+- A semicolon at the end of the loop body makes it an expression which returns a value. While loop and for loop can not return a value.
   */
 fn main() {
     // Functions
