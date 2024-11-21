@@ -3,7 +3,7 @@
 /// @Description: Common Programming Conecpts
 /*
 ****************************************************************Keywords**************************************************************************************
-- Keywords: The Rust language has a set of keywords that are reserved for use by the language only, much as in other languages. These words can nto be used as
+- Keywords: The Rust language has a set of keywords that are reserved for use by the language only, much as in other languages. These words can not be used as
   names of variables or functions. Most of the keywords have special meanings and will be used to do various tasks in the Rust programs; a few have no current
   functionality associated with them but have been reserved for functionality that might be added to Rust in the future.
 - The following is a list of keywords currently in use, with their functionality described.
@@ -125,9 +125,12 @@
 - An array is a single chunk of memory of a known, fixed size that can be allocated on the stack. To access elements of an array indexing is used.
 - If invalid location is accessed then the Rust protects against this by immediately exiting instead of allowing the memory access and continuing.
 
-****************************************************************Functions**************************************************************************************
-- Rust code uses snake case as the conventional style for function and variable names, in which all letters are lowercase and underscores separate words.
+****************************************************************Type Casting**************************************************************************************
+- Rust is a statically and strongly typed language. Operations of two different types can result in overflow or other errors.
+- Type Casting allows to convert a type from one to other. Explicit type conversion is required when going from lower to higher types. An overflow make occur
+  when going from higher to lower.
 */
+use std::io;
 
 #[allow(unused_variables)]
 fn r#match(needle: &str, haystack: &str) -> bool {
@@ -273,5 +276,31 @@ fn main() {
     println!("Number of elements in array: {}", xs.len());
 
     // Arrays are stack allocated.
-    println!("Array occupies {} bytes", mem::size_of_val(&xs));
+    // TODO: Resolve the dependency erro.
+    // println!("Array occupies {} bytes", mem::size_of_val(&xs));
+
+    // Type Casting
+    let x = 255u8;
+    let y = 34_i64;
+    let z = 45.56 as f64;
+
+    let sum = (x as u64 + y as u64);
+    let div = z / (y as f64);
+    println!("Operation output {} and {}", sum, div);
+
+    let x = (i32::MAX as i64) + 1;
+    let y = 10_i32;
+
+    let z = (x as i32) / y; // Case of overflow
+    println!("Z = {}", z);
+
+    // String to Integer Conversion
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Expected to read line");
+
+    println!("{}", input);
+    let int_input: i64 = input.trim().parse().unwrap();
+    println!("{}", int_input + 2);
 }
