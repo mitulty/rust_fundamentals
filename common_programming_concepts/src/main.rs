@@ -93,7 +93,7 @@
   depend on the architecture of the computer on which the program is running on. Integer type defaults to i32. The primary situation in which code can use
   isize or usize is when indexing some sort of collection.
 - Integers can, alternatively, be expressed using hexadecimal, octal or binary notation using these prefixes respectively: 0x, 0o or 0b.
-- Number literals can be written in different forms: 98_222,0xfff, 0o77,0b1111_0000, b'A' (Byte- u8 only). Number literals use _ as a visual separator to make
+- Number literals can be written in different forms: 98_222, 0xfff, 0o77, 0b1111_0000 and b'A' (Byte- u8 only). Number literals use _ as a visual separator to make
   the number easier to read. The number literals that can be multiple numeric types allow a type suffix, such as 57u8, to designate the type.
 - When compiling in debug mode, Rust includes checks for integer overflow that can cause program to panic at runtime if this behavior occurs. When compiling
   in release mode with the --release flag, Rust does not include checks for integer overflow that cause panics. Instead, if overflow occurs, Rust performs
@@ -138,7 +138,7 @@ fn r#match(needle: &str, haystack: &str) -> bool {
 }
 
 // Tuples can be used as function arguments and as return values.
-fn reverse(pair: (i32, bool)) -> (bool, i32) {
+fn _reverse(pair: (i32, bool)) -> (bool, i32) {
     // `let` can be used to bind the members of a tuple to variables.
     let (int_param, bool_param) = pair;
 
@@ -176,45 +176,53 @@ fn main() {
     const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 
     // Data Types
-    let guess: u32 = "42".parse().expect("Not a number!"); // Type Annotation
-    let x = 2.0; // f64
+    let _guess: u32 = "42".parse().expect("Not a number!"); // Type Annotation
+    let _x = 2.0; // f64
 
-    let y: f32 = 3.0; // f32
+    let _a: i32 = 98_222; // Decimal
+    let _b: i32 = 0xff; // Hex
+    let _c: i32 = 0o77; // Octal
+    let _d: i32 = 0b1111_0000; // Binary
+    let _e: u8  = b'A';  // Byte (u8 only)
+    let _f: u8  = 255;
+
+    let _y: f32 = 3.0; // f32
+    let _three_hours: u32 = THREE_HOURS_IN_SECONDS;
 
     // Mathematical Operations
     // addition
-    let sum = 5 + 10;
+    let _sum = 5 + 10;
 
     // subtraction
-    let difference = 95.5 - 4.3;
+    let _difference = 95.5 - 4.3;
 
     // multiplication
-    let product = 4 * 30;
+    let _product = 4 * 30;
 
     // division
-    let quotient = 56.7 / 32.2;
-    let truncated = -5 / 3; // Results in -1
+    let _quotient = 56.7 / 32.2;
+    let _truncated = -5 / 3; // Results in -1
 
     // remainder
-    let remainder = 43 % 5;
+    let _remainder = 43 % 5;
 
     // Boolean Type
-    let t = true;
+    let _t = true;
 
-    let f: bool = false; // with explicit type annotation
-    let c = 'z';
-    let z: char = 'ℤ'; // with explicit type annotation
-    let heart_eyed_cat = '😻';
+    let _f: bool = false; // with explicit type annotation
+    let _c = 'z';
+    let _z: char = 'ℤ'; // with explicit type annotation
+    let _heart_eyed_cat = '😻';
 
     // Compound Types
     // Tuple
-    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    let _tup: (i32, f64, u8) = (500, 6.4, 1);
 
     //This first creates a tuple and binds it to the variable tup. It then uses a pattern with let to take tup and turn it into three separate variables, x, y, and z.
     //this is called destructuring because it breaks the single tuple into three parts.
     let tup = (500, 6.4, 1);
     let (x, y, z) = tup;
-    println!("The value of y is: {y}");
+    println!("The value of (x,y,z) is: {}{}{}",x,y,z);
     // A tuple with a bunch of different types.
     let long_tuple = (
         1u8, 2u16, 3u32, 4u64, -1i8, -2i16, -3i32, -4i64, 0.1f32, 0.2f64, 'a', true,
@@ -241,8 +249,8 @@ fn main() {
     let (a, b, c, d) = tuple;
     println!("{:?}, {:?}, {:?}, {:?}", a, b, c, d);
     // Arrays
-    let a = [1, 2, 3, 4, 5];
-    let months = [
+    let _a = [1, 2, 3, 4, 5];
+    let _months = [
         "January",
         "February",
         "March",
@@ -258,15 +266,15 @@ fn main() {
     ];
 
     let a: [i32; 5] = [1, 2, 3, 4, 5];
-    let arr = [3; 5];
-    let first = a[0];
-    let second = a[1];
+    let _arr = [3; 5];
+    let _first = a[0];
+    let _second = a[1];
 
     // Fixed-size array (type signature is superfluous).
     let xs: [i32; 5] = [1, 2, 3, 4, 5];
 
     // All elements can be initialized to the same value.
-    let ys: [i32; 500] = [0; 500];
+    let _ys: [i32; 500] = [0; 500];
 
     // Indexing starts at 0.
     println!("First element of the array: {}", xs[0]);
@@ -284,7 +292,7 @@ fn main() {
     let y = 34_i64;
     let z = 45.56 as f64;
 
-    let sum = (x as u64 + y as u64);
+    let sum = (x as u64) + (y as u64);
     let div = z / (y as f64);
     println!("Operation output {} and {}", sum, div);
 
