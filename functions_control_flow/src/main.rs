@@ -159,7 +159,7 @@ fn main() {
     }
 
     println!("LIFTOFF!!!");
-    let a = [10, 20, 30, 40, 50];
+    let a = [100, 200, 300, 400, 500];
     let mut index = 0;
 
     while index < 5 {
@@ -172,6 +172,17 @@ fn main() {
 
     for element in a {
         println!("the value is: {element}");
+    }
+    for number in a.iter() {
+        println!("The Value is: {}", number);
+    }
+    println!("Excluding Upper Bound");
+    for r in 1..4 {
+        println!("{}!", r);
+    }
+    println!("Including Upper Bound using =");
+    for r in 1..=7 {
+        println!("{}!", r);
     }
 }
 
