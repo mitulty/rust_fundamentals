@@ -2,7 +2,7 @@
 /// @Date:   2024-11-15 20:05:04
 /// @Description: Functions and Control Flow
 /*
-****************************************************************Functions*************************************************************************************
+****************************************************************Functions************************************************************************************
 - Functions are prevalent in Rust code. The main function is the entry point of many programs.
 - Rust code uses snake case as the conventional style for function and variable names, in which all letters are lowercase and underscores separate words.
 - A function is defined in Rust by entering fn followed by a function name and a set of parentheses. The curly brackets tell the compiler where the function
@@ -22,34 +22,39 @@
                 x + 1
             }
   is a block that evaluates to 4. The value gets bound to y as part of the let statement. The x + 1 line doesn’t have a semicolon at the end.
-  Expressions do not include ending semicolons. If a semicolon is added to the end of an expression,it becomes a statement, and it will then not return a value.
+  Expressions do not include ending semicolons. If a semicolon is added to the end of an expression,it becomes a statement, and it will then not return a
+  value.
 - Functions can return value to the code that calls them. It's type has to be declared after an arrow instead of the name.
+- Rust Functions can return an expression but not a statement. A macro is an expression, a function call is an expression, a literal is an expression, a block
+  is an expression, an if block is an expression.
 
-*****************************************************************If/Else If/Else*******************************************************************************
+*****************************************************************If/Else If/Else******************************************************************************
 - The ability to run some code depending on whether a condition is true and to run some code repeatedly while a condition is true are basic building blocks in
   most programming languages. The most common constructs that let the code control the flow of execution are if expressions and loops.
 - An if expression allows to branch the code depending on conditions. All if expressions start with the keyword if, followed by a condition. Blocks of code
   associated with the conditions in if expressions are sometimes called arms. Optionally, an else expression can be include to give the program an alternative
-  block of code to execute should the condition evaluate to false. If an else expression is mentioned and the condition is false, the program will just skip the
-  if block and move on to the next bit of code.
+  block of code to execute should the condition evaluate to false. If an else expression is mentioned and the condition is false, the program will just skip
+  the if block and move on to the next bit of code.
 - Rust will not automatically try to convert non-Boolean types to a Boolean.The code must be explicit and always provide if with a Boolean as its condition.
 - Multiple conditions and arms can be used by combining if and else in an else if expression.
-- Because if is an expression, it can be used on the right side of a let statement to assign the outcome to a variable provided the arms have similar expression
-  types.
+- Because if is an expression, it can be used on the right side of a let statement to assign the outcome to a variable provided the arms have similar
+  expression types. A funtion can return if it has an expression as the last code executed. A return keyword can be used with a statement or an expression to
+  return a value from the function.
 
-*********************************************************************Loop**************************************************************************************
-- It’s often useful to execute a block of code more than once. For this task, Rust provides several loops, which will run through the code inside the loop body
-  to the end and then start immediately back at the beginning. Rust has three kinds of loops: loop, while, and for.
-- The loop keyword tells Rust to execute a block of code over and over again forever or until told explicitly it to stop. Rust also provides a way to break out
-  of a loop using code. The break keyword can be placed within the loop to tell the program when to stop executing the loop. The continue in a loop tells the
-  program to skip over any remaining code in this iteration of the loop and go to the next iteration.
+*********************************************************************Loop*************************************************************************************
+- It’s often useful to execute a block of code more than once. For this task, Rust provides several loops, which will run through the code inside the loop
+  body to the end and then start immediately back at the beginning. Rust has three kinds of loops: loop, while, and for.
+- The loop keyword tells Rust to execute a block of code over and over again forever or until told explicitly it to stop. Rust also provides a way to break
+  out of a loop using code. The break keyword can be placed within the loop to tell the program when to stop executing the loop. The continue in a loop tells
+  the program to skip over any remaining code in this iteration of the loop and go to the next iteration.
 - Code can also use return from inside a loop. While break only exits the current loop, return always exits the current function.
-- If there are nested loops, break and continue apply to the innermost loop at that point.A loop label can be optionally applied on a loop that can then be used
-  with break or continue to specify that those keywords apply to the labeled loop instead of the innermost loop. Loop labels must begin with a single quote.
-- A program will often need to evaluate a condition within a loop. While the condition is true, the loop runs. When the condition ceases to be true, the program
-  calls break, stopping the loop. It’s possible to implement behavior like this using a combination of loop, if, else, and break. However, this pattern is so
-  common that Rust has a built-in language construct for it, called a while loop. This construct eliminates a lot of nesting that would be necessary when used
-  loop, if, else, and break. While a condition evaluates to true, the code runs; otherwise, it exits the loop.
+- If there are nested loops, break and continue apply to the innermost loop at that point.A loop label can be optionally applied on a loop that can then be
+  used with break or continue to specify that those keywords apply to the labeled loop instead of the innermost loop. Loop labels must begin with a single
+  quote.
+- A program will often need to evaluate a condition within a loop. While the condition is true, the loop runs. When the condition ceases to be true, the
+  program calls break, stopping the loop. It’s possible to implement behavior like this using a combination of loop, if, else, and break. However, this
+  pattern is so common that Rust has a built-in language construct for it, called a while loop. This construct eliminates a lot of nesting that would be
+  necessary when used loop, if, else, and break. While a condition evaluates to true, the code runs; otherwise, it exits the loop.
 - The while construct can be used to loop over the elements of a collection, such as an array. This approach is error prone though.
 - As a more concise alternative, a for loop can be used to execute some code for each item in a collection.
 - A semicolon at the end of the loop body makes it an expression which returns a value. While loop and for loop can not return a value.
@@ -67,7 +72,7 @@ fn main() {
 
     let y = {
         let x = 3;
-        x + 1
+        x + 1 // A semicolon at the end forces this to a statement and this block does not return anything.
     };
 
     println!("The value of y is: {y}");
