@@ -25,7 +25,7 @@
   keyword and the struct name followed by the types in the tuple.
 - Each struct defined is its own type, even though the fields within the struct might have the same types.
 - Structures can be defined with no fields. These are called unit-like structs because they behave similar to (), the unit type. Unit-like structs can be useful when
-  a trait is needed to implementd on some type but don’t have any data that you want to store in the type itself.
+  a trait is needed to implementd on some type but don’t have any data that is to be stored in the type itself.
 - Methods are similar to functions: they are declared with the fn keyword and a name, they can have parameters and a return value, and they contain some code that’s
   run when the method is called from somewhere else. Unlike functions, methods are defined within the context of a struct or an enum or a trait object. Their first
   parameter is always self, which represents the instance of the struct the method is being called on. Other parameters can also be passed to the methods.
@@ -174,6 +174,7 @@ fn build_new_user(email: String, username: String) -> User {
     }
 }
 
+// Using the Field Init Shorthand
 fn build_user(email: String, username: String) -> User {
     User {
         active: true,
